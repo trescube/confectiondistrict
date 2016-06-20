@@ -5,5 +5,5 @@ import java.util.Queue;
 import com.stupidplebs.confectiondistrict.cards.Card;
 
 public interface CardDeck {
-	Queue<Card> shuffle();
+    Queue<Card> shuffle();
 }
