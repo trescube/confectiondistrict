@@ -1,0 +1,245 @@
+players:
+  - player 1
+  - player 2
+deck:
+  colors:
+    - color: RED
+      single: 8
+      double: 2
+    - color: ORANGE
+      single: 7
+      double: 2
+    - color: YELLOW
+      single: 8
+      double: 2
+    - color: GREEN
+      single: 7
+      double: 2
+    - color: BLUE
+      single: 8
+      double: 2
+    - color: PURPLE
+      single: 7
+      double: 2
+  confections:
+    - APPLE_PIE
+    - BLINTZ
+    - TAFFY
+    - LICORICE
+    - BUBBLE_GUM
+    - TORT
+    - SORBET
+spaces:
+  # 1
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 2
+  - color: BLUE
+    jump: 74
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - confection: APPLE_PIE
+  - color: RED
+  - color: PURPLE
+  # 3
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  - confection: BLINTZ
+  # 4
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 5
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 6
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - confection: TAFFY
+  - color: PURPLE
+  # 7
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 8
+  - color: BLUE
+    jump: 15
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 9
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - confection: LICORICE
+  - color: RED
+  - color: PURPLE
+  # 10
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  - color: RED
+    sticky: true
+  # 11
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 12
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 13
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 14
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 15
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 16
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - confection: BUBBLE_GUM
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 17
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 18
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 19
+  - color: BLUE
+  - color: GREEN
+  - color: RED
+    sticky: true
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 20
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 21
+  - color: BLUE
+  - color: GREEN
+  - confection: TORT
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 22
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  - confection: SORBET
+  # 23
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 24
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 25
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 26
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 27
+  - color: BLUE
+    sticky: true
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 28
+  - color: BLUE
+  - color: GREEN
+  - color: YELLOW
+  - color: ORANGE
+  - color: RED
+  - color: PURPLE
+  # 29
+  - color: BLUE
+  - color: GREEN

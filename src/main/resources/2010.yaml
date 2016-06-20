@@ -1,0 +1,216 @@
+players:
+  - player 1
+  - player 2
+deck:
+  colors:
+    - color: RED
+      single: 8
+      double: 2
+    - color: ORANGE
+      single: 7
+      double: 2
+    - color: YELLOW
+      single: 8
+      double: 2
+    - color: GREEN
+      single: 7
+      double: 2
+    - color: BLUE
+      single: 8
+      double: 2
+    - color: PURPLE
+      single: 7
+      double: 2
+  confections:
+    - APPLE_PIE
+    - BLINTZ
+    - TAFFY
+    - LICORICE
+    - BUBBLE_GUM
+    - TORT
+    - SORBET
+spaces:
+  # 1
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+    jump: 68
+  - color: PURPLE
+  # 2
+  - color: YELLOW
+  - color: BLUE
+  - confection: APPLE_PIE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 3
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - confection: BLINTZ
+  - color: RED
+  - color: PURPLE
+  # 4
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 5
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  - confection: TAFFY
+  # 6
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+    jump: 14
+  # 7
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 8
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - confection: LICORICE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 9
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+    sticky: true
+  - color: PURPLE
+  # 10
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 11
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 12
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 13
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 14
+  - color: YELLOW
+  - color: BLUE
+  - confection: BUBBLE_GUM
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 15
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 16
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+    sticky: true
+  - color: PURPLE
+  # 17
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 18
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - confection: TORT
+  - color: RED
+  - color: PURPLE
+  # 19
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  - confection: SORBET
+  # 20
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 21
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 22
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 23
+  - color: YELLOW
+  - color: BLUE
+    sticky: true
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 24
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  - color: RED
+  - color: PURPLE
+  # 25
+  - color: YELLOW
+  - color: BLUE
+  
