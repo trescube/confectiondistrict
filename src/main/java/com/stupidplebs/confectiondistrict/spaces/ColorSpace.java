@@ -91,8 +91,12 @@ public class ColorSpace implements Space {
 
     @Override
     public String toString() {
-        return "ColorSpace{" + "color=" + color + ", " + "sticky=" + sticky + ", " + "jumpAheadCount=" + jumpAheadCount
-                + ", loseATurn=" + loseATurn + "}";
+        return new StringBuilder("ColorSpace{").
+                append("color=").append(color).append(", ").
+                append("sticky=").append(sticky).append(", ").
+                append("jumpAheadCount=").append(jumpAheadCount).append(", ").
+                append("loseATurn=").append(loseATurn).
+                append("}").toString();
     }
 
 }
