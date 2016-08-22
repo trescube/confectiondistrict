@@ -1,0 +1,128 @@
+players:
+  - player 1
+  - player 2
+deck:
+  colors:
+    - color: RED
+      single: 3
+      double: 3
+    - color: ORANGE
+      single: 4
+      double: 3
+    - color: YELLOW
+      single: 4
+      double: 3
+    - color: GREEN
+      single: 4
+      double: 3
+    - color: BLUE
+      single: 4
+      double: 3
+    - color: PURPLE
+      single: 3
+      double: 3
+  confections:
+    - APPLE_PIE
+    - BLINTZ
+    - TAFFY
+    - LICORICE
+spaces:
+  # 1
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+    jump: 32
+  - color: ORANGE
+  - color: GREEN
+  # 2
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 3
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+    jump: 7
+  # 4
+  - color: RED
+  - color: PURPLE
+  - confection: APPLE_PIE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 5
+  - color: RED
+  - color: PURPLE
+    # lose a turn
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 6
+  - color: RED
+  - confection: BLINTZ
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 7
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 8
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - confection: TAFFY
+  - color: GREEN
+  # 9
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+    # lose a turn
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 10
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 11
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - confection: LICORICE
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 12
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
+  # 13
+  - color: RED
+  - color: PURPLE
+  - color: YELLOW
+  - color: BLUE
+  - color: ORANGE
+  - color: GREEN
