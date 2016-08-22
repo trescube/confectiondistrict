@@ -8,8 +8,9 @@ public class ColorSpace implements Space {
     private final Color color;
     private final Boolean sticky;
     private final Integer jumpAheadCount;
+    private final Boolean loseATurn;
 
-    private ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount) {
+    private ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount, final Boolean loseATurn) {
         if (null == color) {
             throw new NullPointerException("color cannot be null");
         }
@@ -26,21 +27,26 @@ public class ColorSpace implements Space {
         this.color = color;
         this.sticky = sticky;
         this.jumpAheadCount = jumpAheadCount;
+        this.loseATurn = loseATurn;
 
     }
 
     public ColorSpace(final Color color, final Boolean sticky) {
-        this(color, sticky, 0);
+        this(color, sticky, 0, false);
     }
 
     public ColorSpace(final Color color, final Integer trailheadSpaceCount) {
-        this(color, false, trailheadSpaceCount);
+        this(color, false, trailheadSpaceCount, false);
     }
 
     public ColorSpace(final Color color) {
-        this(color, false, 0);
+        this(color, false, 0, false);
     }
 
+    public static Space loseATurn(final Color color) {
+        return new ColorSpace(color, false, 0, true);
+    }
+    
     public Color getColor() {
         return color;
     }
@@ -71,19 +77,22 @@ public class ColorSpace implements Space {
 
         final ColorSpace other = (ColorSpace) obj;
 
-        return color == other.color && sticky == other.sticky && jumpAheadCount == other.jumpAheadCount;
+        return color == other.color && 
+                sticky == other.sticky && 
+                jumpAheadCount == other.jumpAheadCount &&
+                loseATurn == other.loseATurn;
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, sticky, jumpAheadCount);
+        return Objects.hash(color, sticky, jumpAheadCount, loseATurn);
     }
 
     @Override
     public String toString() {
         return "ColorSpace{" + "color=" + color + ", " + "sticky=" + sticky + ", " + "jumpAheadCount=" + jumpAheadCount
-                + "}";
+                + ", loseATurn=" + loseATurn + "}";
     }
 
 }
