@@ -9,7 +9,7 @@ public class ColorSpace implements Space {
     private final Boolean sticky;
     private final Integer jumpAheadCount;
 
-    public ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount) {
+    private ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount) {
         if (null == color) {
             throw new NullPointerException("color cannot be null");
         }
