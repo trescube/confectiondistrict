@@ -20,15 +20,17 @@ class ActualBoardSpec extends Specification {
                 trailhead(Color.GREEN, 2).
                 confection(Confection.BLINTZ).
                 color(Color.YELLOW).
+                loseATurn(Color.BLUE).
                 build()
 
         expect:
         board.allSpaces == [
             new StartSpace(),
-            new ColorSpace(Color.RED, true),
-            new ColorSpace(Color.GREEN, 2),
+            new ColorSpace.Builder(Color.RED).sticky().build(),
+            new ColorSpace.Builder(Color.GREEN).trailhead(2).build(),
             new ConfectionSpace(Confection.BLINTZ),
-            new ColorSpace(Color.YELLOW),
+            new ColorSpace.Builder(Color.YELLOW).build(),
+            new ColorSpace.Builder(Color.BLUE).loseATurn().build(),
             new FinishSpace()
         ]
 

@@ -7,7 +7,7 @@ import com.stupidplebs.confectiondistrict.Color
 class ColorSpaceSpec extends Specification {
     def "null color parameter should throw NullPointerException"() {
         when:
-        new ColorSpace(null, true, 17, true)
+        new ColorSpace.Builder(null)
 
         then:
         NullPointerException e = thrown()
@@ -15,18 +15,9 @@ class ColorSpaceSpec extends Specification {
 
     }
 
-    def "null sticky parameter should throw NullPointerException"() {
-        when:
-        new ColorSpace(Color.GREEN, null, 17, true)
-
-        then:
-        NullPointerException e = thrown()
-        e.message == "sticky cannot be null"
-
-    }
     def "null jumpAheadCount parameter should throw NullPointerException"() {
         when:
-        new ColorSpace(Color.GREEN, true, null, true)
+        new ColorSpace.Builder(Color.GREEN).trailhead(null)
 
         then:
         NullPointerException e = thrown()
@@ -34,67 +25,26 @@ class ColorSpaceSpec extends Specification {
 
     }
 
-    def "negative jumpAheadCount parameter should throw IllegalArgumentException"() {
+    def "zero jumpAheadCounty parameter should throw IllegalArgumentException"() {
         when:
-        new ColorSpace(Color.GREEN, -1)
+        new ColorSpace.Builder(Color.GREEN).trailhead(0)
 
         then:
         IllegalArgumentException e = thrown()
-        e.message == "jumpAheadCount cannot be negative"
+        e.message == "jumpAheadCount must be positive"
 
     }
     
-    def "one parameter constructor should use false and 0"() {
-        given:
-        def space = new ColorSpace(Color.GREEN)
+    def "negative jumpAheadCount parameter should throw IllegalArgumentException"() {
+        when:
+        new ColorSpace.Builder(Color.GREEN).trailhead(-1)
 
-        expect:
-        space.color == Color.GREEN
-        !space.sticky
-        space.jumpAheadCount == 0
-        !space.trailhead
+        then:
+        IllegalArgumentException e = thrown()
+        e.message == "jumpAheadCount must be positive"
 
     }
-
-    def "constructor without sticky parameter should use false"() {
-        given:
-        def space = new ColorSpace(Color.GREEN, 17)
-
-        expect:
-        space.color == Color.GREEN
-        !space.sticky
-        space.jumpAheadCount == 17
-        space.trailhead
-
-    }
-
-    def "constructor without jumpAheadCount parameter should use 0"() {
-        given:
-        def nextSpace = new FinishSpace()
-
-        def space = new ColorSpace(Color.GREEN, true)
-
-        expect:
-        space.color == Color.GREEN
-        space.sticky
-        space.jumpAheadCount == 0
-        !space.trailhead
-
-    }
-
-    def "getLoseATurnSpace should return a ColorSpace with loseATurn true"(){
-        given:
-        def space = ColorSpace.loseATurn(Color.GREEN)
-        
-        expect:
-        space.color == Color.GREEN
-        !space.sticky
-        space.jumpAheadCount == 0
-        space.loseATurn
-        !space.trailhead
-        
-    }
-
+    
     def "getters should return values supplied"() {
         given:
         def nextSpace = new FinishSpace()
