@@ -1,0 +1,9 @@
+language: java
+groovy:
+  - 2.3.9
+jdk:
+  - oraclejdk8
+
+script:
+  - groovy -version
+  - gradle test
