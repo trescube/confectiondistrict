@@ -8,37 +8,13 @@ public class ColorSpace implements Space {
     private final Color color;
     private final Boolean sticky;
     private final Integer jumpAheadCount;
+    private final Boolean loseATurn;
 
-    public ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount) {
-        if (null == color) {
-            throw new NullPointerException("color cannot be null");
-        }
-        if (null == sticky) {
-            throw new NullPointerException("sticky cannot be null");
-        }
-        if (null == jumpAheadCount) {
-            throw new NullPointerException("jumpAheadCount cannot be null");
-        }
-        if (jumpAheadCount < 0) {
-            throw new IllegalArgumentException("jumpAheadCount cannot be negative");
-        }
-
+    private ColorSpace(final Color color, final Boolean sticky, final Integer jumpAheadCount, final Boolean loseATurn) {
         this.color = color;
         this.sticky = sticky;
         this.jumpAheadCount = jumpAheadCount;
-
-    }
-
-    public ColorSpace(final Color color, final Boolean sticky) {
-        this(color, sticky, 0);
-    }
-
-    public ColorSpace(final Color color, final Integer trailheadSpaceCount) {
-        this(color, false, trailheadSpaceCount);
-    }
-
-    public ColorSpace(final Color color) {
-        this(color, false, 0);
+        this.loseATurn = loseATurn;
     }
 
     public Color getColor() {
@@ -57,6 +33,10 @@ public class ColorSpace implements Space {
         return jumpAheadCount;
     }
 
+    public Boolean isLoseATurn() {
+        return loseATurn;
+    }
+    
     @Override
     public boolean equals(final Object obj) {
         if (null == obj) {
@@ -71,19 +51,68 @@ public class ColorSpace implements Space {
 
         final ColorSpace other = (ColorSpace) obj;
 
-        return color == other.color && sticky == other.sticky && jumpAheadCount == other.jumpAheadCount;
+        return color == other.color && 
+                sticky == other.sticky && 
+                jumpAheadCount == other.jumpAheadCount &&
+                loseATurn == other.loseATurn;
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, sticky, jumpAheadCount);
+        return Objects.hash(color, sticky, jumpAheadCount, loseATurn);
     }
 
     @Override
     public String toString() {
-        return "ColorSpace{" + "color=" + color + ", " + "sticky=" + sticky + ", " + "jumpAheadCount=" + jumpAheadCount
-                + "}";
+        return new StringBuilder("ColorSpace{").
+                append("color=").append(color).append(", ").
+                append("sticky=").append(sticky).append(", ").
+                append("jumpAheadCount=").append(jumpAheadCount).append(", ").
+                append("loseATurn=").append(loseATurn).
+                append("}").toString();
     }
 
+    public static class Builder {
+        private final Color color;
+        private Boolean sticky = false;
+        private Integer jumpAheadCount = 0;
+        private Boolean loseATurn = false;
+        
+        public Builder(final Color color) {
+            if (null == color) {
+                throw new NullPointerException("color cannot be null");
+            }
+            
+            this.color = color;
+        }
+        
+        public Builder sticky() {
+            this.sticky = true;
+            return this;
+        }
+        
+        public Builder loseATurn() {
+            this.loseATurn = true;
+            return this;
+        }
+        
+        public Builder trailhead(final Integer jumpAheadCount) {
+            if (null == jumpAheadCount) {
+                throw new NullPointerException("jumpAheadCount cannot be null");
+            }
+            if (jumpAheadCount <= 0) {
+                throw new IllegalArgumentException("jumpAheadCount must be positive");
+            }
+            
+            this.jumpAheadCount = jumpAheadCount;
+            return this;
+        }
+        
+        public ColorSpace build() {
+            return new ColorSpace(color, sticky, jumpAheadCount, loseATurn);
+        }
+        
+    }
+    
 }

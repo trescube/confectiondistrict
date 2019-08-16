@@ -7,7 +7,7 @@ import com.stupidplebs.confectiondistrict.Color
 class ColorSpaceSpec extends Specification {
     def "null color parameter should throw NullPointerException"() {
         when:
-        new ColorSpace(null, true, 17)
+        new ColorSpace.Builder(null)
 
         then:
         NullPointerException e = thrown()
@@ -15,18 +15,9 @@ class ColorSpaceSpec extends Specification {
 
     }
 
-    def "null sticky parameter should throw NullPointerException"() {
-        when:
-        new ColorSpace(Color.GREEN, null, 17)
-
-        then:
-        NullPointerException e = thrown()
-        e.message == "sticky cannot be null"
-
-    }
     def "null jumpAheadCount parameter should throw NullPointerException"() {
         when:
-        new ColorSpace(Color.GREEN, true, null)
+        new ColorSpace.Builder(Color.GREEN).trailhead(null)
 
         then:
         NullPointerException e = thrown()
@@ -34,71 +25,44 @@ class ColorSpaceSpec extends Specification {
 
     }
 
-    def "negative jumpAheadCount parameter should throw IllegalArgumentException"() {
+    def "zero jumpAheadCounty parameter should throw IllegalArgumentException"() {
         when:
-        new ColorSpace(Color.GREEN, -1)
+        new ColorSpace.Builder(Color.GREEN).trailhead(0)
 
         then:
         IllegalArgumentException e = thrown()
-        e.message == "jumpAheadCount cannot be negative"
+        e.message == "jumpAheadCount must be positive"
 
     }
+    
+    def "negative jumpAheadCount parameter should throw IllegalArgumentException"() {
+        when:
+        new ColorSpace.Builder(Color.GREEN).trailhead(-1)
 
-    def "one parameter constructor should use false and 0"() {
-        given:
-        def space = new ColorSpace(Color.GREEN)
-
-        expect:
-        space.color == Color.GREEN
-        !space.sticky
-        space.jumpAheadCount == 0
-        !space.trailhead
+        then:
+        IllegalArgumentException e = thrown()
+        e.message == "jumpAheadCount must be positive"
 
     }
-
-    def "constructor without sticky parameter should use false"() {
-        given:
-        def space = new ColorSpace(Color.GREEN, 17)
-
-        expect:
-        space.color == Color.GREEN
-        !space.sticky
-        space.jumpAheadCount == 17
-        space.trailhead
-
-    }
-
-    def "constructor without jumpAheadCount parameter should use 0"() {
-        given:
-        def nextSpace = new FinishSpace()
-
-        def space = new ColorSpace(Color.GREEN, true)
-
-        expect:
-        space.color == Color.GREEN
-        space.sticky
-        space.jumpAheadCount == 0
-        !space.trailhead
-
-    }
-
+    
     def "getters should return values supplied"() {
         given:
         def nextSpace = new FinishSpace()
 
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         expect:
         space.color == Color.GREEN
         space.sticky
         space.jumpAheadCount == 17
         space.trailhead
+        space.loseATurn
 
     }
 
     def "instance should be unequal to null"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
         def other = null
@@ -110,7 +74,7 @@ class ColorSpaceSpec extends Specification {
 
     def "instance should be equal to itself"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
         def other = space
@@ -122,7 +86,7 @@ class ColorSpaceSpec extends Specification {
 
     def "instance should be unequal to a non-ColorSpace object"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
         def other = "this is not a ColorSpace object"
@@ -134,10 +98,10 @@ class ColorSpaceSpec extends Specification {
 
     def "instances differing only on color should be unequal and have unequal hashCodes"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
-        def other = new ColorSpace(Color.BLUE, true, 17)
+        def other = new ColorSpace(Color.BLUE, true, 17, true)
 
         expect:
         !space.equals(other)
@@ -147,10 +111,10 @@ class ColorSpaceSpec extends Specification {
 
     def "instances differing only on sticky should be unequal and have unequal hashCodes"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
-        def other = new ColorSpace(Color.GREEN, false, 17)
+        def other = new ColorSpace(Color.GREEN, false, 17, true)
 
         expect:
         !space.equals(other)
@@ -160,10 +124,23 @@ class ColorSpaceSpec extends Specification {
 
     def "instances differing only on jumpAheadCount should be unequal and have unequal hashCodes"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
-        def other = new ColorSpace(Color.GREEN, true, 18)
+        def other = new ColorSpace(Color.GREEN, true, 18, true)
+
+        expect:
+        !space.equals(other)
+        space.hashCode() != other.hashCode()
+
+    }
+
+    def "instances differing only on loseATurn should be unequal and have unequal hashCodes"() {
+        given:
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
+
+        and:
+        def other = new ColorSpace(Color.GREEN, true, 17, false)
 
         expect:
         !space.equals(other)
@@ -173,10 +150,10 @@ class ColorSpaceSpec extends Specification {
 
     def "instances with equal color, sticky, and jumpAheadCount should be equal and have equal hashCodes"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         and:
-        def other = new ColorSpace(Color.GREEN, true, 17)
+        def other = new ColorSpace(Color.GREEN, true, 17, true)
 
         expect:
         space.equals(other)
@@ -186,10 +163,10 @@ class ColorSpaceSpec extends Specification {
 
     def "toString should output color, sticky, and jumpAheadCount"() {
         given:
-        def space = new ColorSpace(Color.GREEN, true, 17)
+        def space = new ColorSpace(Color.GREEN, true, 17, true)
 
         expect:
-        space.toString() == "ColorSpace{color=GREEN, sticky=true, jumpAheadCount=17}"
+        space.toString() == "ColorSpace{color=GREEN, sticky=true, jumpAheadCount=17, loseATurn=true}"
 
     }
 

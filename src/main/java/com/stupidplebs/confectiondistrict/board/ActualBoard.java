@@ -178,17 +178,22 @@ public class ActualBoard implements Board {
         }
 
         public Builder color(final Color color) {
-            this.spaces.add(new ColorSpace(color));
+            this.spaces.add(new ColorSpace.Builder(color).build());
             return this;
         }
 
         public Builder sticky(final Color color) {
-            this.spaces.add(new ColorSpace(color, true));
+            this.spaces.add(new ColorSpace.Builder(color).sticky().build());
             return this;
         }
 
         public Builder trailhead(final Color color, final Integer jumpAheadCount) {
-            this.spaces.add(new ColorSpace(color, jumpAheadCount));
+            this.spaces.add(new ColorSpace.Builder(color).trailhead(jumpAheadCount).build());
+            return this;
+        }
+
+        public Builder loseATurn(final Color color) {
+            this.spaces.add(new ColorSpace.Builder(color).loseATurn().build());
             return this;
         }
 
